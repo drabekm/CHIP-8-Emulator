@@ -46,23 +46,23 @@ namespace CHIP_8_Emulator.Emulator
         {
             switch (instruction.HexData[0])
             {
-                case '0': //CLS or RET
-                    if (instruction.HexData == "00E0") // CLS
+                case '0':
+                    if (instruction.HexData == "00E0") 
                     {
                         return new CLS();
                     }
-                    else if (instruction.HexData == "00EE") // RET
+                    else if (instruction.HexData == "00EE") 
                     {
                         return new RET();
                     }
                     break;
-                case '1': // JP
+                case '1':
                     return new JP();
-                case '2': // CALL
+                case '2': 
                     return new CALL();
                 case '3':
                     return new SE();
-                case '7': // ADD
+                case '7':
                     return new ADD();
 
             }

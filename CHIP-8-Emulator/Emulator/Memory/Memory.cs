@@ -1,34 +1,24 @@
 ﻿using CHIP_8_Emulator.Emulator.Instruction;
 using System;
-using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CHIP_8_Emulator.Emulator
 {
     class Memory
     {
-        
-        
-        //Stack<int> callStack = new Stack<int>(12);
-
-        public const int programStartAdress = 0x200;
-        public const int memorySize = 4096;
-        private int lastInstructionAdress = programStartAdress;
+        private const int programStartAdress = 0x200;
+        private const int memorySize = 4096;
 
         private byte[] memory = new byte[memorySize];
+        private int lastInsertedInstructionAdress = programStartAdress;
+        
         public void InsertInstruction(byte[] instruction)
-        {            
-            if(instruction.Length != 2)
-            {
-                throw new Exception("Instruction is not two bytes long");
-            }
+        {
+            ValidateInsertedInstruction(instruction);
 
-            memory[lastInstructionAdress] = instruction[0];
-            memory[lastInstructionAdress + 1] = instruction[1];
-            lastInstructionAdress += 2;
+            memory[lastInsertedInstructionAdress] = instruction[0];
+            memory[lastInsertedInstructionAdress + 1] = instruction[1];
+            lastInsertedInstructionAdress += 2;
         }
 
         public InstructionDTO GetInstruction(int address)
@@ -39,23 +29,16 @@ namespace CHIP_8_Emulator.Emulator
             return new InstructionDTO(rawInstruction, address);
         }
 
-       /* public InstructionDTO[] GetNNextInstructions(int n)
+        private void ValidateInsertedInstruction(byte[] instruction)
         {
-            var instructions = new byte[n * 2];
-            for(int i = 0; i < n; i++)
+            if (instruction.Length != 2)
             {
-                instructions[0]
+                throw new Exception("Instruction is not two bytes long");
             }
-        }*/
-
-       /* public void Reset()
-        {
-            callStack.Clear();
-
-            for(int i = 0; i < registers.Count(); i++)
+            else if (instruction.All(x => x == 0))
             {
-                registers[i] = 0;
+                throw new Exception("Instruction cannot be empty");
             }
-        }*/
+        }
     }
 }
