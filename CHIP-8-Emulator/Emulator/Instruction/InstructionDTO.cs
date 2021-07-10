@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CHIP_8_Emulator.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,46 @@ namespace CHIP_8_Emulator.Emulator.Instruction
     {
         public byte[] RawData {get; private set;}
         public string HexData { get; private set; }
-        public InstructionType Type { get; private set; }
-        public string Position { get; private set; }
+        public int Position { get; private set; }
 
-        public InstructionDTO(byte[] rawData, string hexData, InstructionType type, string position)
+        /// <summary>
+        /// A 12-bit value, the lowest 12 bits of the instruction
+        /// </summary>
+        public int NNN { get; private set; }
+
+        /// <summary>
+        /// A 4-bit value, the lowest 4 bits of the instruction
+        /// </summary>
+        public int N { get; private set; }
+
+        /// <summary>
+        /// A 4-bit value, the lower 4 bits of the high byte of the instruction
+        /// </summary>
+        public int X { get; private set; }
+
+        /// <summary>
+        /// A 4-bit value, the upper 4 bits of the low byte of the instruction
+        /// </summary>
+        public int Y { get; private set; }
+
+        /// <summary>
+        /// An 8-bit value, the lowest 8 bits of the instruction
+        /// </summary>
+        public int KK { get; private set; }
+
+        public InstructionDTO(byte[] rawData, int position)
         {
-            RawData = rawData;
-            HexData = hexData;
-            Type = type;
+            RawData = rawData;            
             Position = position;
+            HexData = BitConverter.ToString(rawData).Replace("-", "");
+
+            NNN = BinaryHelper.GetThreeNibbleValue(rawData);
+            N = BinaryHelper.GetLowerNibbleValue(rawData[1]);
+            X = BinaryHelper.GetLowerNibbleValue(rawData[0]);
+            Y = BinaryHelper.GetHigherNibbleValue(rawData[1]) >> 4;
+            KK = rawData[1];
         }
+
+        
     }
 }

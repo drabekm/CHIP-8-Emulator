@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CHIP_8_Emulator.Helpers
 {
-    class BinaryConvertor
+    class BinaryHelper
     {
         public static string ByteToHex(int byteValue)
         {
@@ -26,6 +26,21 @@ namespace CHIP_8_Emulator.Helpers
             }
 
             return String.Empty;
+        }
+
+        public static int GetLowerNibbleValue(byte value)
+        {
+            return value & 0b00001111;
+        }
+
+        public static int GetHigherNibbleValue(byte value)
+        {
+            return value & 0b11110000;
+        }
+
+        public static int GetThreeNibbleValue(byte[] value)
+        {
+            return (GetLowerNibbleValue(value[0]) << 8) + value[1];
         }
 
         public static int HexToInt(string hexValue)

@@ -23,7 +23,7 @@ namespace CHIP_8_Emulator
     /// </summary>
     public partial class MainWindow : Window
     {
-        Interpreter interpreter = new Interpreter();
+        CPU cpu = new CPU();
 
         public MainWindow()
         {
@@ -36,10 +36,21 @@ namespace CHIP_8_Emulator
             if(fileDialog.ShowDialog().Value)
             {
                 FileHandler fileHandler = new FileHandler();
-                fileHandler.LoadFile(fileDialog.FileName, interpreter.Memory);
+                fileHandler.LoadFile(fileDialog.FileName, cpu.Memory);
+
+                //cpu.Memory.GetInstruction();
             }
         }
 
-        
+        private void LoadInstructions()
+        {
+            //var instruction = cpu.Memory.GetInstruction();
+           // txtCurrentInstruction.Text = BitConverter.ToString(ba).Replace("-", "");
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            cpu.ExecuteSingleCycle();
+        }
     }
 }

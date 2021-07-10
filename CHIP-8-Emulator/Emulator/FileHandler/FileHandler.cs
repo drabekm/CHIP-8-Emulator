@@ -30,13 +30,11 @@ namespace CHIP_8_Emulator.Emulator
                     using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open)))
                     {
                         byte[] instruction = new byte[2];
-                        int memoryIndex = Memory.programStartAdress;
 
-                        while ( (reader.BaseStream.Length - reader.BaseStream.Position) >= 2)
+                        while ((reader.BaseStream.Length - reader.BaseStream.Position) >= 2)
                         {
                             instruction = reader.ReadBytes(2);
-                            memory.InsertInstruction(instruction, memoryIndex);
-                            memoryIndex += 2;
+                            memory.InsertInstruction(instruction);
                         }
                     }
                     readingSuccesfull = true;
@@ -44,7 +42,7 @@ namespace CHIP_8_Emulator.Emulator
             }
             catch
             {
-                
+                readingSuccesfull = false;
             }
 
             return readingSuccesfull;

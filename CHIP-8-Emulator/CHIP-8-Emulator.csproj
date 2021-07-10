@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Emulator\Instruction\Actions\ADD.cs" />
+    <Compile Include="Emulator\Instruction\Actions\CALL.cs" />
+    <Compile Include="Emulator\Instruction\Actions\CLS.cs" />
+    <Compile Include="Emulator\Instruction\Actions\IExecutableInstruction.cs" />
+    <Compile Include="Emulator\Instruction\Actions\JP.cs" />
+    <Compile Include="Emulator\Instruction\Actions\RET.cs" />
+    <Compile Include="Emulator\Instruction\Actions\SE.cs" />
+    <Compile Include="Emulator\Memory\RegisterTypes.cs" />
     <Compile Include="Views\Memory\MemoryPreview.xaml.cs">
       <DependentUpon>MemoryPreview.xaml</DependentUpon>
     </Compile>
@@ -68,11 +76,9 @@
     </Compile>
     <Compile Include="Emulator\FileHandler\FileHandler.cs" />
     <Compile Include="Emulator\Instruction\InstructionDTO.cs" />
-    <Compile Include="Emulator\Instruction\InstructionTypes.cs" />
-    <Compile Include="Emulator\Interpreter\Interpreter.cs" />
+    <Compile Include="Emulator\CPU\CPU.cs" />
     <Compile Include="Emulator\Memory\Memory.cs" />
-    <Compile Include="Emulator\Parser\Parser.cs" />
-    <Compile Include="Helpers\BinaryConvertor.cs" />
+    <Compile Include="Helpers\BinaryHelper.cs" />
     <Compile Include="Views\MainWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
