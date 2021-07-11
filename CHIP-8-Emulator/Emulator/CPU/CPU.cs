@@ -6,25 +6,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace CHIP_8_Emulator.Emulator
 {
     class CPU
     {
         public Memory Memory { get; set; }
+        public Display Display { get; set; }
+
         public int[] Registers { get; set; }
+        public int VIRegister { get; set; }
+        public int VFRegister { get; set; }
+
         public int ProgramCounter { get; set; }
         public Stack<int> CallStack { get; set; }
 
         private const int callStackSize = 16;
         private const int registerCount = 16;
 
-        public CPU()
+        public CPU(Canvas displayCanvas)
         {
             Memory = new Memory();
+            Display = new Display(displayCanvas);
+
             Registers = new int[registerCount];
             CallStack = new Stack<int>(callStackSize);
             ProgramCounter = 0x200;
+
+            VIRegister = 0;
+            VFRegister = 0;
         }
 
         public void Reset()
@@ -94,6 +105,10 @@ namespace CHIP_8_Emulator.Emulator
                             return new AND();
                     }
                     break;
+                case 'A':
+                    return new LDIndexVariant();
+                case 'D':
+                    return new DRW();
             }
 
             return null;
@@ -103,6 +118,11 @@ namespace CHIP_8_Emulator.Emulator
         {
             ValidateInstruction(instructionData, instruction);
             instruction.Execute(instructionData, this);
+            if (instruction is DRW)
+            {
+                Display.RedrawDisplay();
+                
+            }
         }
 
         private void ValidateInstruction(InstructionDTO instructionData, IExecutableInstruction instruction)

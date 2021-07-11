@@ -9,8 +9,19 @@ namespace CHIP_8_Emulator.Emulator.Instruction
 {
     class InstructionDTO
     {
+        /// <summary>
+        /// Two byte array representing the instruction
+        /// </summary>
         public byte[] RawData {get; private set;}
+
+        /// <summary>
+        /// Hex code of instruction
+        /// </summary>
         public string HexData { get; private set; }
+
+        /// <summary>
+        /// Position of instruction in memory
+        /// </summary>
         public int Position { get; private set; }
 
         /// <summary>

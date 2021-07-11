@@ -29,6 +29,11 @@ namespace CHIP_8_Emulator.Emulator
             return new InstructionDTO(rawInstruction, address);
         }
 
+        public byte GetByte(int address)
+        {
+            return memory[address];
+        }
+
         private void ValidateInsertedInstruction(byte[] instruction)
         {
             if (instruction.Length != 2)

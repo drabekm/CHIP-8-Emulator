@@ -10,7 +10,7 @@ namespace CHIP_8_Emulator.Emulator.Instruction.Actions
     {
         public void Execute(InstructionDTO instructionData, CPU cpu)
         {
-            throw new NotImplementedException();
+            cpu.Display.ClearDisplay();
         }
     }
 }

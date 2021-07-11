@@ -10,7 +10,7 @@ namespace CHIP_8_Emulator.Emulator.Instruction.Actions
     {
         public void Execute(InstructionDTO instructionData, CPU cpu)
         {
-            cpu.Registers[instructionData.X] += cpu.Registers[instructionData.X] + instructionData.KK;
+            cpu.Registers[instructionData.X] +=  instructionData.KK;
         }
     }
 }

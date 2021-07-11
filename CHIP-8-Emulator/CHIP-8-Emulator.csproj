@@ -55,14 +55,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Emulator\Display\Display.cs" />
     <Compile Include="Emulator\Instruction\Actions\ADD.cs" />
+    <Compile Include="Emulator\Instruction\Actions\AND.cs" />
     <Compile Include="Emulator\Instruction\Actions\CALL.cs" />
     <Compile Include="Emulator\Instruction\Actions\CLS.cs" />
+    <Compile Include="Emulator\Instruction\Actions\DRW.cs" />
     <Compile Include="Emulator\Instruction\Actions\IExecutableInstruction.cs" />
     <Compile Include="Emulator\Instruction\Actions\JP.cs" />
+    <Compile Include="Emulator\Instruction\Actions\LD.cs" />
+    <Compile Include="Emulator\Instruction\Actions\LDIndexVariant.cs" />
+    <Compile Include="Emulator\Instruction\Actions\LDRegisterVariant.cs" />
+    <Compile Include="Emulator\Instruction\Actions\OR.cs" />
     <Compile Include="Emulator\Instruction\Actions\RET.cs" />
     <Compile Include="Emulator\Instruction\Actions\SE.cs" />
-    <Compile Include="Emulator\Memory\RegisterTypes.cs" />
+    <Compile Include="Emulator\Instruction\Actions\SERegisterVariant.cs" />
+    <Compile Include="Emulator\Instruction\Actions\SNE.cs" />
     <Compile Include="Views\Memory\MemoryPreview.xaml.cs">
       <DependentUpon>MemoryPreview.xaml</DependentUpon>
     </Compile>

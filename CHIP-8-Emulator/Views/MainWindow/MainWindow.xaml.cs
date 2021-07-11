@@ -23,11 +23,13 @@ namespace CHIP_8_Emulator
     /// </summary>
     public partial class MainWindow : Window
     {
-        CPU cpu = new CPU();
+        CPU cpu;
 
         public MainWindow()
         {
             InitializeComponent();
+            cpu = new CPU(CvsDisplay);
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -50,7 +52,10 @@ namespace CHIP_8_Emulator
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            cpu.ExecuteSingleCycle();
+            //for(int i = 0; i < 1000; i++)
+           // {
+                cpu.ExecuteSingleCycle();
+           // }
         }
     }
 }

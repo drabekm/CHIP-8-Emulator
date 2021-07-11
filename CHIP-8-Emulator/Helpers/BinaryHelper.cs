@@ -43,6 +43,26 @@ namespace CHIP_8_Emulator.Helpers
             return (GetLowerNibbleValue(value[0]) << 8) + value[1];
         }
 
+        public static int GetLeastSignificantBitValue(byte value)
+        {
+            return value & 0b00000001;
+        }
+
+        public static int GetLeastSignificantBitValue(byte[] value)
+        {
+            return value[1] & 0b00000001;
+        }
+
+        public static int GetMostSignificantBitValue(byte value)
+        {
+            return value & 0b10000000;
+        }
+
+        public static int GetMostSignificantBitValue(byte[] value)
+        {
+            return value[0] & 0b10000000;
+        }
+
         public static int HexToInt(string hexValue)
         {
             return Convert.ToInt32(hexValue, 16);
