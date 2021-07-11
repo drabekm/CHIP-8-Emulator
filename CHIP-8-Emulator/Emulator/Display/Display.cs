@@ -49,7 +49,8 @@ namespace CHIP_8_Emulator.Emulator
 
         public void RedrawDisplay()
         {
-            DisplayCanvas.Children.Clear();
+            ClearDisplay();
+
             for (int y = 0; y < verticalSize; y++) 
             {
                 for (int x = 0; x < horizontalSize; x++)
@@ -57,21 +58,21 @@ namespace CHIP_8_Emulator.Emulator
                     if (screenPixels[x,y])
                     {
                         Rectangle pixel = new Rectangle();
+
                         pixel.Stroke = new SolidColorBrush(Colors.Black);
                         pixel.Fill = new SolidColorBrush(Colors.Black);
                         pixel.Width = DisplayCanvas.Width / horizontalSize;
                         pixel.Height = DisplayCanvas.Height / verticalSize;
+
                         Canvas.SetLeft(pixel, (DisplayCanvas.Width / horizontalSize) * (x));
                         Canvas.SetTop(pixel, (DisplayCanvas.Height / verticalSize) * (y));
-                        DisplayCanvas.Children.Add(pixel);
-                        
-                    }
-                    
+
+                        DisplayCanvas.Children.Add(pixel);                        
+                    }                    
                 }
             }
 
             DisplayCanvas.InvalidateVisual();
-
         }
     }
 }

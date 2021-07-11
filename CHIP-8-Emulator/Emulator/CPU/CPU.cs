@@ -118,10 +118,15 @@ namespace CHIP_8_Emulator.Emulator
         {
             ValidateInstruction(instructionData, instruction);
             instruction.Execute(instructionData, this);
+
+            RedrawDisplayIfNeeded(instruction);
+        }
+
+        private void RedrawDisplayIfNeeded(IExecutableInstruction instruction)
+        {
             if (instruction is DRW)
             {
                 Display.RedrawDisplay();
-                
             }
         }
 
