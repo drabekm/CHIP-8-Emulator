@@ -103,10 +103,28 @@ namespace CHIP_8_Emulator.Emulator
                             return new OR();
                         case '2':
                             return new AND();
+                        case '3':
+                            return new XOR();
+                        case '4':
+                            return new ADDRegisterVariant();
+                        case '5':
+                            return new SUB();
+                        case '6':
+                            return new SHR();
+                        case '7':
+                            return new SUBN();
+                        case 'E':
+                            return new SHL();
                     }
                     break;
+                case '9':
+                    return new SNE();
                 case 'A':
                     return new LDIndexVariant();
+                case 'B':
+                    return new JPRegisterVariant();
+                case 'C':
+                    return new RND();
                 case 'D':
                     return new DRW();
             }

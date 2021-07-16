@@ -63,14 +63,22 @@
     <Compile Include="Emulator\Instruction\Actions\DRW.cs" />
     <Compile Include="Emulator\Instruction\Actions\IExecutableInstruction.cs" />
     <Compile Include="Emulator\Instruction\Actions\JP.cs" />
+    <Compile Include="Emulator\Instruction\Actions\JPRegisterVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\LD.cs" />
     <Compile Include="Emulator\Instruction\Actions\LDIndexVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\LDRegisterVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\OR.cs" />
     <Compile Include="Emulator\Instruction\Actions\RET.cs" />
+    <Compile Include="Emulator\Instruction\Actions\RND.cs" />
     <Compile Include="Emulator\Instruction\Actions\SE.cs" />
     <Compile Include="Emulator\Instruction\Actions\SERegisterVariant.cs" />
+    <Compile Include="Emulator\Instruction\Actions\SHL.cs" />
+    <Compile Include="Emulator\Instruction\Actions\SHR.cs" />
     <Compile Include="Emulator\Instruction\Actions\SNE.cs" />
+    <Compile Include="Emulator\Instruction\Actions\SUB.cs" />
+    <Compile Include="Emulator\Instruction\Actions\SUBN.cs" />
+    <Compile Include="Emulator\Instruction\Actions\XOR.cs" />
+    <Compile Include="Helpers\RandomGenerator.cs" />
     <Compile Include="Views\Memory\MemoryPreview.xaml.cs">
       <DependentUpon>MemoryPreview.xaml</DependentUpon>
     </Compile>
