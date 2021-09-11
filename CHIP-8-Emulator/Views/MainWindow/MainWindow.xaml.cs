@@ -1,4 +1,5 @@
 ﻿using CHIP_8_Emulator.Emulator;
+using CHIP_8_Emulator.Helpers;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -24,18 +25,19 @@ namespace CHIP_8_Emulator
     public partial class MainWindow : Window
     {
         CPU cpu;
+        InputHelper inputHelper;
 
         public MainWindow()
         {
             InitializeComponent();
             cpu = new CPU(CvsDisplay);
-            
+            inputHelper = new InputHelper(cpu);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            if(fileDialog.ShowDialog().Value)
+            if (fileDialog.ShowDialog().Value)
             {
                 FileHandler fileHandler = new FileHandler();
                 fileHandler.LoadFile(fileDialog.FileName, cpu.Memory);
@@ -47,15 +49,22 @@ namespace CHIP_8_Emulator
         private void LoadInstructions()
         {
             //var instruction = cpu.Memory.GetInstruction();
-           // txtCurrentInstruction.Text = BitConverter.ToString(ba).Replace("-", "");
+            // txtCurrentInstruction.Text = BitConverter.ToString(ba).Replace("-", "");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             //for(int i = 0; i < 1000; i++)
-           // {
-                cpu.ExecuteSingleCycle();
-           // }
+            // {
+            cpu.ExecuteSingleCycle();
+            // }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var window = Window.GetWindow(this);
+            window.KeyDown += inputHelper.HandleKeyPress;
+            window.KeyUp += inputHelper.HendleKeyReleased;
         }
     }
 }

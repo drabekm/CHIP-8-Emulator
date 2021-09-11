@@ -8,9 +8,6 @@ namespace CHIP_8_Emulator.Emulator.Instruction.Actions
 {
     class DRW : IExecutableInstruction
     {
-        private const int horizontalScreenSize = 64;
-        private const int verticalScreenSize = 32;
-
         public void Execute(InstructionDTO instructionData, CPU cpu)
         {
             int yCoordinate = GetYCoordinate(instructionData, cpu);
@@ -50,12 +47,12 @@ namespace CHIP_8_Emulator.Emulator.Instruction.Actions
 
         private int GetXCoordinate(InstructionDTO instructionData, CPU cpu)
         {
-            return cpu.Registers[instructionData.X] % horizontalScreenSize;
+            return cpu.Registers[instructionData.X] % Display.horizontalSize;
         }
 
         private int GetYCoordinate(InstructionDTO instructionData, CPU cpu)
         {
-            return cpu.Registers[instructionData.Y] % verticalScreenSize;
+            return cpu.Registers[instructionData.Y] % Display.verticalSize;
         }
 
         private int GetBitFromByte(ref byte input)
@@ -67,7 +64,7 @@ namespace CHIP_8_Emulator.Emulator.Instruction.Actions
 
         private bool IndexAboveScreenSize(int x, int y)
         {
-            return x >= horizontalScreenSize || y >= verticalScreenSize;
+            return x >= Display.horizontalSize || y >= Display.verticalSize;
         }
 
     }

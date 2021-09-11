@@ -10,12 +10,12 @@ using System.Windows.Threading;
 
 namespace CHIP_8_Emulator.Emulator
 {
-    class Display
+    public class Display
     {
         public Canvas DisplayCanvas { get; set; }
 
-        private const int horizontalSize = 64;
-        private const int verticalSize = 32;
+        public static int horizontalSize = 64;
+        public static int verticalSize = 32;
         private bool[,] screenPixels = new bool[horizontalSize, verticalSize];
 
         public Display(Canvas displayCanvas)

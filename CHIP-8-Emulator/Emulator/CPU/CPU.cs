@@ -12,37 +12,45 @@ namespace CHIP_8_Emulator.Emulator
 {
     class CPU
     {
+        #region Components
         public Memory Memory { get; set; }
         public Display Display { get; set; }
+        #endregion
 
-        public int[] Registers { get; set; }
-        public int VIRegister { get; set; }
-        public int VFRegister { get; set; }
+        #region Registers
+        public int[] Registers { get; set; } // general registers
+        public int VIRegister { get; set; } // index register
+        public int VFRegister { get; set; } // flag register
+        public int DTRegister { get; set; } // delay timer register
+        public int STRegister { get; set; } // sound timer register
+        #endregion
 
         public int ProgramCounter { get; set; }
         public Stack<int> CallStack { get; set; }
+        public int CurrentlyPressedKeyboard { get; set; } // negative value means that no key is pressed
 
         private const int callStackSize = 16;
         private const int registerCount = 16;
+        private const int programStartAddress = 0x200;
 
         public CPU(Canvas displayCanvas)
-        {
-            Memory = new Memory();
+        {            
             Display = new Display(displayCanvas);
+            Memory = new Memory();
 
+            InitializeRegisters();
+        }
+
+        public void InitializeRegisters()
+        {
             Registers = new int[registerCount];
             CallStack = new Stack<int>(callStackSize);
-            ProgramCounter = 0x200;
+            ProgramCounter = programStartAddress;
 
             VIRegister = 0;
             VFRegister = 0;
-        }
-
-        public void Reset()
-        {
-            Memory = new Memory();
-            CallStack.Clear();
-            Registers = new int[registerCount];
+            DTRegister = 0;
+            STRegister = 0;
         }
 
         public void ExecuteSingleCycle()

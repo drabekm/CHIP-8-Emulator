@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Emulator\Display\Display.cs" />
     <Compile Include="Emulator\Instruction\Actions\ADD.cs" />
+    <Compile Include="Emulator\Instruction\Actions\ADDRegisterVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\AND.cs" />
     <Compile Include="Emulator\Instruction\Actions\CALL.cs" />
     <Compile Include="Emulator\Instruction\Actions\CLS.cs" />
@@ -74,10 +75,12 @@
     <Compile Include="Emulator\Instruction\Actions\SERegisterVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\SHL.cs" />
     <Compile Include="Emulator\Instruction\Actions\SHR.cs" />
+    <Compile Include="Emulator\Instruction\Actions\SKP.cs" />
     <Compile Include="Emulator\Instruction\Actions\SNE.cs" />
     <Compile Include="Emulator\Instruction\Actions\SUB.cs" />
     <Compile Include="Emulator\Instruction\Actions\SUBN.cs" />
     <Compile Include="Emulator\Instruction\Actions\XOR.cs" />
+    <Compile Include="Helpers\InputHelper.cs" />
     <Compile Include="Helpers\RandomGenerator.cs" />
     <Compile Include="Views\Memory\MemoryPreview.xaml.cs">
       <DependentUpon>MemoryPreview.xaml</DependentUpon>
