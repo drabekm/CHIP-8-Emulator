@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CHIP_8_Emulator.Emulator.Instruction.Actions
 {
-    class SKP : IExecutableInstruction
+    class SKNP : IExecutableInstruction
     {
         public void Execute(InstructionDTO instructionData, CPU cpu)
         {
             var registerValue = cpu.Registers[instructionData.X];
             var currentKey = cpu.CurrentlyPressedKeyboard;
-            if (registerValue == currentKey)
+            if (registerValue != currentKey)
             {
                 cpu.ProgramCounter += 2;
             }

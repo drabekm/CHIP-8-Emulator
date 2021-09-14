@@ -59,6 +59,7 @@
     <Compile Include="Emulator\Instruction\Actions\ADD.cs" />
     <Compile Include="Emulator\Instruction\Actions\ADDRegisterVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\AND.cs" />
+    <Compile Include="Emulator\Instruction\Actions\BlankInstruction.cs" />
     <Compile Include="Emulator\Instruction\Actions\CALL.cs" />
     <Compile Include="Emulator\Instruction\Actions\CLS.cs" />
     <Compile Include="Emulator\Instruction\Actions\DRW.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Emulator\Instruction\Actions\JP.cs" />
     <Compile Include="Emulator\Instruction\Actions\JPRegisterVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\LD.cs" />
+    <Compile Include="Emulator\Instruction\Actions\LDDelayTimerVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\LDIndexVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\LDRegisterVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\OR.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Emulator\Instruction\Actions\SHL.cs" />
     <Compile Include="Emulator\Instruction\Actions\SHR.cs" />
     <Compile Include="Emulator\Instruction\Actions\SKP.cs" />
+    <Compile Include="Emulator\Instruction\Actions\SKNP.cs" />
     <Compile Include="Emulator\Instruction\Actions\SNE.cs" />
     <Compile Include="Emulator\Instruction\Actions\SUB.cs" />
     <Compile Include="Emulator\Instruction\Actions\SUBN.cs" />

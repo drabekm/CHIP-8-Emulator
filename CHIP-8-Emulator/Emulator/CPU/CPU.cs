@@ -135,9 +135,25 @@ namespace CHIP_8_Emulator.Emulator
                     return new RND();
                 case 'D':
                     return new DRW();
+                case 'E':
+                    switch (instruction.KK)
+                    {
+                        case 0x9E:
+                            return new SKP();
+                        case 0xA1:
+                            return new SKNP();
+                    }
+                    break;
+                case 'F':
+                    switch (instruction.KK)
+                    {
+                        case 0x07:
+                            return new LDDelayTimerVariant();                        
+                    }
+                    break;
             }
 
-            return null;
+            return new BlankInstruction(); //Don't want to use 'default' in switch, because it has nested switch statements
         }
 
         private void ExecuteInstruction(InstructionDTO instructionData, IExecutableInstruction instruction)
@@ -164,7 +180,7 @@ namespace CHIP_8_Emulator.Emulator
             }
             if (instruction == null)
             {
-                throw new Exception("Instruction implementation cannot be null");
+               // throw new Exception("Instruction implementation cannot be null");
             }
         }
                 
