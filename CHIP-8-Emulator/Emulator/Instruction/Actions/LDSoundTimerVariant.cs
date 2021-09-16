@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CHIP_8_Emulator.Emulator.Instruction.Actions
 {
-    class LDDelayTimerVariant : IExecutableInstruction
+    class LDSoundTimerVariant : IExecutableInstruction
     {
         public void Execute(InstructionDTO instructionData, CPU cpu)
         {
-            cpu.Registers[instructionData.X] = cpu.DTRegister;
+            cpu.STRegister = cpu.Registers[instructionData.X];
         }
     }
 }

@@ -143,7 +143,13 @@ namespace CHIP_8_Emulator.Emulator
                     switch (instruction.KK)
                     {
                         case 0x07:
-                            return new LDDelayTimerVariant();                        
+                            return new LDDelayTimerVariantDTtoVX();
+                        case 0x0A:
+                            return new LDKeyInputVariant();
+                        case 0x18:
+                            return new LDSoundTimerVariant();
+                        case 0x1E:
+                            return new ADDIRegisterVariant();
                     }
                     break;
             }
@@ -169,14 +175,14 @@ namespace CHIP_8_Emulator.Emulator
 
         private void ValidateInstruction(InstructionDTO instructionData, IExecutableInstruction instruction)
         {
-            if (instructionData == null || instructionData.RawData.All(x => x == 0))
+           /* if (instructionData == null || instructionData.RawData.All(x => x == 0))
             {
                 throw new Exception("Instruction data cannot be null or empty");
             }
             if (instruction == null)
             {
                // throw new Exception("Instruction implementation cannot be null");
-            }
+            }*/
         }
 
         private void InitializeRegisters()

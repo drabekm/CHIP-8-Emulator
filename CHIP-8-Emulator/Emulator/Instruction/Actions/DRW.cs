@@ -25,15 +25,15 @@ namespace CHIP_8_Emulator.Emulator.Instruction.Actions
 
                     cpu.VFRegister |= cpu.Display.SetPixel(xCoordinate, yCoordinate, currentBit);
 
-                    xCoordinate--; //TODO. xCoor can go into negative numbers 
-                    if (IndexAboveScreenSize(xCoordinate, yCoordinate))
+                    xCoordinate--; 
+                    if (IndexAboveOrBelowScreenSize(xCoordinate, yCoordinate))
                     {
                         break;
                     }
                 }
 
                 yCoordinate++;
-                if (IndexAboveScreenSize(xCoordinate, yCoordinate))
+                if (IndexAboveOrBelowScreenSize(xCoordinate, yCoordinate))
                 {
                     break;
                 }
@@ -62,9 +62,9 @@ namespace CHIP_8_Emulator.Emulator.Instruction.Actions
             return value;
         }
 
-        private bool IndexAboveScreenSize(int x, int y)
+        private bool IndexAboveOrBelowScreenSize(int x, int y)
         {
-            return x >= Display.horizontalSize || y >= Display.verticalSize;
+            return x >= Display.horizontalSize || y >= Display.verticalSize || x < 0 || y < 0;
         }
 
     }
