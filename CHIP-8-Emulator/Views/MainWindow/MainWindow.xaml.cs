@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace CHIP_8_Emulator
 {
@@ -26,45 +27,95 @@ namespace CHIP_8_Emulator
     {
         CPU cpu;
         InputHelper inputHelper;
+        DispatcherTimer CPUTimerClock;
+        CurrentSettingsDTO currentSettings;
 
         public MainWindow()
         {
             InitializeComponent();
             cpu = new CPU(CvsDisplay);
             inputHelper = new InputHelper(cpu);
+            currentSettings = new CurrentSettingsDTO("Nothing is loaded", false);
+            CPUTimerClock = SetUpCPUClockTimer();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        #region Events
+
+        private void BtnLoadClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             if (fileDialog.ShowDialog().Value)
             {
+                cpu.ResetEverything();
+                SetProgramName(fileDialog.SafeFileName);
                 FileHandler fileHandler = new FileHandler();
                 fileHandler.LoadFile(fileDialog.FileName, cpu.Memory);
 
-                //cpu.Memory.GetInstruction();
+                btnStart.IsEnabled = true;
+                btnStep.IsEnabled = true;
             }
         }
 
-        private void LoadInstructions()
+        private void BtnStepClick(object sender, RoutedEventArgs e)
         {
-            //var instruction = cpu.Memory.GetInstruction();
-            // txtCurrentInstruction.Text = BitConverter.ToString(ba).Replace("-", "");
+            for (int i = 0; i < 10; i++)
+            {
+                cpu.ExecuteSingleCycle();
+            }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void BtnStartClick(object sender, RoutedEventArgs e)
         {
-            //for(int i = 0; i < 1000; i++)
-            // {
+            
+            var isCPURunning = CPUTimerClock.IsEnabled;
+            if (isCPURunning)
+            {
+                CPUTimerClock.Stop();
+                btnStart.Content = "Start program";
+                btnLoad.IsEnabled = true;
+                btnStep.IsEnabled = true;
+            }
+            else
+            {
+                CPUTimerClock.Start();
+                btnStart.Content = "Stop program";
+                btnLoad.IsEnabled = false;
+                btnStep.IsEnabled = false;
+            }
+            
+        }
+
+        private void WindowLoaded(object sender, RoutedEventArgs e)
+        {
+            SetUpKeyPressEvents();
+        }
+
+        private void CPUClockTimerTick(object sender, EventArgs e)
+        {
             cpu.ExecuteSingleCycle();
-            // }
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        #endregion
+
+        private void SetProgramName(string filename)
+        {
+            currentSettings.ProgramName = filename;
+            txtCurrentProgram.Text = filename;
+        }
+
+        private void SetUpKeyPressEvents()
         {
             var window = Window.GetWindow(this);
             window.KeyDown += inputHelper.HandleKeyPress;
             window.KeyUp += inputHelper.HendleKeyReleased;
+        }
+
+        private DispatcherTimer SetUpCPUClockTimer()
+        {
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(CPUClockTimerTick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 2); // should be 500Hz
+            return dispatcherTimer;
         }
     }
 }

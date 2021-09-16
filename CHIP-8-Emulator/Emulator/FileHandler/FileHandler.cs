@@ -23,6 +23,7 @@ namespace CHIP_8_Emulator.Emulator
         public bool LoadFile(string path, Memory memory)
         {
             bool readingSuccesfull = false;
+            memory.CleanMemory();
             try
             {
                 if (File.Exists(path))

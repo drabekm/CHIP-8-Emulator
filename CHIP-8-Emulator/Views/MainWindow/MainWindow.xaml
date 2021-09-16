@@ -9,7 +9,7 @@
         
         
         
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" KeyUp="Window_KeyUp">
+        Title="MainWindow" Height="450" Width="800" Loaded="WindowLoaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="240*"/>
@@ -21,9 +21,10 @@
             <ColumnDefinition Width="343*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Content="Load program" HorizontalAlignment="Left" Margin="170,42,0,0" VerticalAlignment="Top" Width="151" Height="57" Click="Button_Click" Grid.Column="1" Grid.Row="2"/>
-        <Button Content="Step program" HorizontalAlignment="Left" Margin="19,42,0,0" VerticalAlignment="Top" Width="151" Height="57" Click="Button_Click_1" Grid.Column="1" Grid.Row="2"/>
-        <TextBox Grid.Column="1" Name="txtCurrentInstruction" HorizontalAlignment="Stretch" Height="23" Margin="10,10,10,10" TextWrapping="Wrap"  Text="" VerticalAlignment="Top"  />
+        <Button Name="btnLoad"  Content="Load program" HorizontalAlignment="Left" Margin="170,31,0,0" VerticalAlignment="Top" Width="151" Height="57" Click="BtnLoadClick" Grid.Column="1" Grid.Row="2"/>
+        <Button Name="btnStep" IsEnabled="false" Content="Step program" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="151" Height="32" Click="BtnStepClick" Grid.Column="1" Grid.Row="2"/>
+        <Button Name="btnStart" IsEnabled="false" Content="Start program" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Width="151" Height="32" Click="BtnStartClick" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Grid.Column="1" Name="txtCurrentProgram" HorizontalAlignment="Stretch" Height="23" Margin="10,10,10,10" TextWrapping="Wrap"  Text="Nothing is loaded yet" TextAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"  />
         <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Height="190" Margin="10,40,10,0" TextWrapping="Wrap"  Text="" VerticalAlignment="Top" Name="txtNextInstructions" MaxLines="7"/>
         <Canvas x:Name="CvsDisplay" HorizontalAlignment="Left" Height="220" Margin="10,10,0,0" VerticalAlignment="Top" Width="429" Background="#FFE6DFDF"/>
 

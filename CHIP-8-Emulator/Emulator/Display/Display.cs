@@ -42,9 +42,21 @@ namespace CHIP_8_Emulator.Emulator
             return pixelWasTurnedOff;
         }
 
+        /// <summary>
+        /// Sets all pixels as white
+        /// </summary>
         public void ClearDisplay()
         {
             DisplayCanvas.Children.Clear();
+        }
+
+        /// <summary>
+        /// Clears display memory
+        /// </summary>
+        public void ResetDisplay()
+        {
+            ClearDisplay();
+            screenPixels = new bool[horizontalSize, verticalSize];
         }
 
         public void RedrawDisplay()

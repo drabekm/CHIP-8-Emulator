@@ -41,16 +41,11 @@ namespace CHIP_8_Emulator.Emulator
             InitializeRegisters();
         }
 
-        public void InitializeRegisters()
+        public void ResetEverything()
         {
-            Registers = new int[registerCount];
-            CallStack = new Stack<int>(callStackSize);
-            ProgramCounter = programStartAddress;
-
-            VIRegister = 0;
-            VFRegister = 0;
-            DTRegister = 0;
-            STRegister = 0;
+            InitializeRegisters();
+            Memory.CleanMemory();
+            Display.ResetDisplay();
         }
 
         public void ExecuteSingleCycle()
@@ -183,6 +178,19 @@ namespace CHIP_8_Emulator.Emulator
                // throw new Exception("Instruction implementation cannot be null");
             }
         }
-                
+
+        private void InitializeRegisters()
+        {
+            Registers = new int[registerCount];
+            CallStack = new Stack<int>(callStackSize);
+            ProgramCounter = programStartAddress;
+
+            VIRegister = 0;
+            VFRegister = 0;
+            DTRegister = 0;
+            STRegister = 0;
+        }
+
+
     }
 }

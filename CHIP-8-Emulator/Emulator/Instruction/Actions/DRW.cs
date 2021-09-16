@@ -25,7 +25,7 @@ namespace CHIP_8_Emulator.Emulator.Instruction.Actions
 
                     cpu.VFRegister |= cpu.Display.SetPixel(xCoordinate, yCoordinate, currentBit);
 
-                    xCoordinate--;
+                    xCoordinate--; //TODO. xCoor can go into negative numbers 
                     if (IndexAboveScreenSize(xCoordinate, yCoordinate))
                     {
                         break;

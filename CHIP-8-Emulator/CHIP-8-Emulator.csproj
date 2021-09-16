@@ -83,6 +83,7 @@
     <Compile Include="Emulator\Instruction\Actions\SUB.cs" />
     <Compile Include="Emulator\Instruction\Actions\SUBN.cs" />
     <Compile Include="Emulator\Instruction\Actions\XOR.cs" />
+    <Compile Include="Helpers\CurrentSettingsDTO.cs" />
     <Compile Include="Helpers\InputHelper.cs" />
     <Compile Include="Helpers\RandomGenerator.cs" />
     <Compile Include="Views\Memory\MemoryPreview.xaml.cs">

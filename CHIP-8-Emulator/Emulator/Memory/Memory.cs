@@ -34,6 +34,12 @@ namespace CHIP_8_Emulator.Emulator
             return memory[address];
         }
 
+        public void CleanMemory()
+        {
+            memory = new byte[memorySize];
+            lastInsertedInstructionAdress = programStartAdress;
+        }
+
         private void ValidateInsertedInstruction(byte[] instruction)
         {
             if (instruction.Length != 2)
