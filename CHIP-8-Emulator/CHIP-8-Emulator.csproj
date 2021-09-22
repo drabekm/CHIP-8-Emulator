@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Emulator\Display\Display.cs" />
     <Compile Include="Emulator\Instruction\Actions\ADD.cs" />
+    <Compile Include="Emulator\Instruction\Actions\ADDIRegisterVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\ADDRegisterVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\AND.cs" />
     <Compile Include="Emulator\Instruction\Actions\BlankInstruction.cs" />
@@ -67,9 +68,14 @@
     <Compile Include="Emulator\Instruction\Actions\JP.cs" />
     <Compile Include="Emulator\Instruction\Actions\JPRegisterVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\LD.cs" />
-    <Compile Include="Emulator\Instruction\Actions\LDDelayTimerVariant.cs" />
+    <Compile Include="Emulator\Instruction\Actions\LDBcdVariant.cs" />
+    <Compile Include="Emulator\Instruction\Actions\LDDelayTimerVariantDTtoVX.cs" />
+    <Compile Include="Emulator\Instruction\Actions\LDDelayTimerVariantVXtoDT.cs" />
+    <Compile Include="Emulator\Instruction\Actions\LDFontVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\LDIndexVariant.cs" />
+    <Compile Include="Emulator\Instruction\Actions\LDKeyInputVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\LDRegisterVariant.cs" />
+    <Compile Include="Emulator\Instruction\Actions\LDSoundTimerVariant.cs" />
     <Compile Include="Emulator\Instruction\Actions\OR.cs" />
     <Compile Include="Emulator\Instruction\Actions\RET.cs" />
     <Compile Include="Emulator\Instruction\Actions\RND.cs" />

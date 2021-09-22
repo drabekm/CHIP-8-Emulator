@@ -146,10 +146,16 @@ namespace CHIP_8_Emulator.Emulator
                             return new LDDelayTimerVariantDTtoVX();
                         case 0x0A:
                             return new LDKeyInputVariant();
+                        case 0x15:
+                            return new LDDelayTimerVariantVXtoDT();
                         case 0x18:
                             return new LDSoundTimerVariant();
                         case 0x1E:
                             return new ADDIRegisterVariant();
+                        case 0x29:
+                            return new LDFontVariant();
+                        case 0x33:
+                            return new LDBcdVariant();
                     }
                     break;
             }
